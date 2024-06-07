@@ -1,0 +1,26 @@
+name: Deploy QA
+
+on:
+  pull_request:
+    branches:
+      - main
+  
+
+jobs:
+   CI:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Flutter install
+        uses: subosito/flutter-action@v2
+        with:
+         flutter-version: '3.19.6'
+         channel: 'stable'
+      - run: flutter --version
+      
+      - name: Run Unit Tests
+        run: flutter test
+           
+      - name: Quality Code
+        run: flutter analyze

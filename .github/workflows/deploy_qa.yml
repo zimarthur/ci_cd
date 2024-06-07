@@ -1,10 +1,9 @@
 name: Deploy QA
 
 on:
-  push:
+  pull_request:
     branches:
-      - 'release*'
-      - 'hotfix*'
+      - main
   
 
 jobs:
